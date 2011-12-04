@@ -1,0 +1,34 @@
+name "ctd_seabird"
+# Optionally declare the version number
+# version "0.1"
+
+using_library "ctd_seabird"
+import_types_from "ctd_seabird/CtdTypes.hpp"
+
+using_library "aggregator"
+import_types_from 'aggregator'
+
+using_task_library "iodrivers_base"
+
+# Declare a new task context (i.e., a component)
+#
+# The corresponding C++ class can be edited in tasks/Task.hpp and
+# tasks/Task.cpp, and will be put in the ctd_seabird namespace.
+task_context "Task" do
+    subclasses "iodrivers_base::Task"
+
+    output_port "ctd_samples", "ctd_seabird/CtdData"
+
+end
+
+
+# Declares a deployment, i.e. an actual executable that contains various tasks.
+deployment "ctd_seabird_test" do
+    # This is a test deployment that should not be installed
+    do_not_install
+
+    # Declares it as periodic, with a period of 100ms
+    task("ctd_seabird", "Task").
+        periodic(0.1)
+end
+
