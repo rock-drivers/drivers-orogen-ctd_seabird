@@ -1,7 +1,7 @@
 /* Generated from orogen/lib/orogen/templates/tasks/Task.cpp */
 
 #include "Task.hpp"
-#include "ctd_seabird/Driver.hpp"
+#include <ctd_seabird/Driver.hpp>
 
 using namespace ctd_seabird;
 
@@ -12,12 +12,14 @@ Task::Task(std::string const& name)
 }
 
 Task::Task(std::string const& name, RTT::ExecutionEngine* engine)
-    : TaskBase(name, engine)
+    : TaskBase(name, engine),
+      mDriver(0)
 {
 }
 
 Task::~Task()
 {
+    delete mDriver;
 }
 
 

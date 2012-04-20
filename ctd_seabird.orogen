@@ -18,7 +18,7 @@ task_context "Task" do
     subclasses "iodrivers_base::Task"
 
     output_port "ctd_samples", "ctd_seabird/CtdData"
-
+    fd_driven
 end
 
 
@@ -28,7 +28,7 @@ deployment "ctd_seabird_test" do
     do_not_install
 
     # Declares it as periodic, with a period of 100ms
-    task("ctd_seabird", "Task").
-        periodic(0.1)
+    task("ctd_seabird", "ctd_seabird::Task")
+    add_default_logger
 end
 

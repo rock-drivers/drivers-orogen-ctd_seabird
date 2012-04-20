@@ -22,11 +22,14 @@ if gui
 end
 
 Orocos.run 'ctd_seabird::Task' => 'ctd' do
+#Orocos.run 'ctd_seabird_test' do
     Orocos.logger.level = Logger::DEBUG
+    Orocos.log_all
     puts "deployed the ctd_seabird::Task task"
 
     ctd = Orocos::TaskContext.get 'ctd'
     ctd.io_port = io_port
+    ctd.io_read_timeout = Time.at(2);
     ctd.configure
     ctd.start
 
