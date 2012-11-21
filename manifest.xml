@@ -5,8 +5,8 @@
   <author>Jens Renken/renken@marum.de</author>
   <license></license>
   <url>http://www.marum.de</url>
-  <logo>http://</logo>
   <depend package="drivers/orogen/iodrivers_base" />
   <depend package="drivers/orogen/aggregator" />
   <depend package="drivers/ctd_seabird" />
+  <tags>underwater</tags>
 </package>
